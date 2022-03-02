@@ -1,0 +1,341 @@
+FORMAT: 1A
+HOST: https://realquests.apiblueprint.org/
+
+# RealQuests
+
+Realquests is a API that allow users/creators to save 
+real world ubication and link an item.
+That item will be available for everyone
+
+- The user can be anonym. [/user] => 0 (id).
+
+
+## Common location [/locationE]
+
+### List of properties location [GET]
+
++ Response 200 (application/json)
+
+        [
+        {
+            
+            "locationExplained": [
+                {
+                    "country": "Name of country"
+                }, {
+                    "city": "Name of city"
+                }, {
+                    "lat": "latitude"
+                }, {
+                    "lon": "longitude"
+                }, {
+                    "radium": "Radium of the place location"
+                }
+            ]
+        }
+        ]
+
+## Location [/locationC]
+
+### list location [GET] 
+
++ Response 200 (application/json)
+    
+        
+        {
+            "count" : 2342
+        }
+        
+    
+## get location by id item [/location/{item_id}]
+### location by id [GET]
+
++ Response 200 (application/json)
+
+    + Headers
+    
+            Location: /location/2
+    
+    + Body
+    
+            {
+                "country": "Spain",
+                "city": "Barcelona",
+                "coordinates": [41.40423657405763, 2.1745877720649145],
+                "radius": 10
+            }
+    
+## Common item [/itemE]
+### List of item properties [GET]
+
++ Response 200 (application/json)
+
+        [
+        {
+            
+            "item": [
+                {
+                    "id" : "integer"
+                }, {   
+                    "location": "Real World location object "
+                }, {
+                    "death": "Time of death utc [at post seconds; at get utc]"
+                }, {
+                    "type": "Octan XXX text , image, sound. 0 = Not contain ; 1 = Contain"
+                }, {
+                    "key": "password decryption"
+                }, {
+                    "route": "uuid if linked; false if not"
+                }
+        
+            ]
+        }
+        ]
+        
+## All Items [/item]
+### Item example [GET]
+
++ Response 200 (application/json)
+
+       
+        [
+            {
+                "id": "4",
+                "location": {
+                    "country": "Spain",
+                    "city": "Barcelona",
+                    "coordinates": [41.40423657405763, 2.1745877720649145],
+                    "radius": 10
+                },
+                "death": "2022-03-22T00:00",
+                "type": "110",
+                "key": "Prueba23",
+                "route": false
+            },
+            {
+                "id": "5",
+                "location": {
+                    "country": "Spain",
+                    "city": "Barcelona",
+                    "coordinates": [41.40423657405763, 2.1745877720649145],
+                    "radius": 10
+                },
+                "death": "2022-03-22T00:00",
+                "type": "110",
+                "key": "Prueba23",
+                "route": false
+            }
+        ]
+        
+### Create a New Item [POST]
+
+You may create your user account
+
++ Request (application/json)
+
+        {
+            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /itemN
+
+    + Body
+
+            {
+                true
+            }
+            
+## get item by id [/item/{id_parameter}]
+### Item example[GET]
+    
++ Response 200 (application/json)
+
+    + Headers
+        
+            Location: /item/2
+    
+    + Body
+        
+        {
+            "location": {
+                        "country": "Spain",
+                        "city": "Barcelona",
+                        "coordinates": [41.40423657405763, 2.1745877720649145],
+                        "radius": 10
+                    },
+                    "death": "2022-03-22T00:00",
+                    "type": "110",
+                    "key": "Prueba23",
+                    "route": false
+        }
+
+## List all users [/user]
+### User examples[GET]
+
++ Response 200 (application/json)
+
+        [
+        {
+        "user": 
+            [
+                {
+                    "items": [
+                    {
+                            "id": "1",
+                            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+                        },
+                        {
+                            "id": "3",
+                            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+                        }
+                    ],
+                    "name": "Pepito",
+                    "username": "MaesePepe",
+                    "email": "pepito@gmail.falso",
+                    "pass": "encripted_pass",
+                    "userId": "1"
+                }],
+                [{
+                    "items": [
+                        {
+                            "id": "4",
+                            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+                        },
+                        {
+                            "id": "5",
+                            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+                        }
+                    ],
+                    "name": "Pepito2",
+                    "username": "MaesePepe2",
+                    "email": "pepito2@gmail.falso",
+                    "pass": "encripted_pass",
+                    "userId": "2"
+                }
+            ]
+        }
+        ]
+
+## get user by id [/user/{id_parameter}]
+### User example[GET]
+
++ Response 200 (application/json)
+
+    + Headers
+        
+            Location: /user/2
+    
+    + Body
+
+            [
+                {
+                    "name": "Pepito2",
+                    "username": "MaesePepe2",
+                    "email": "pepito2@gmail.falso",
+                    "pass": "encripted_pass",
+                    "userId": "2",
+                    "items": [
+                        {
+                            "id": "4",
+                            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+                        },
+                        {
+                            "id": "5",
+                            "location": {
+                                "country": "Spain",
+                                "city": "Barcelona",
+                                "coordinates": [41.40423657405763, 2.1745877720649145],
+                                "radius": 10
+                            },
+                            "death": "2022-03-22T00:00",
+                            "type": "110",
+                            "key": "Prueba23",
+                            "route": false
+                        }
+                    ]
+                }
+            ]
+
+
+### Create a New User [POST]
+
+You may create your user account
+
++ Request (application/json)
+
+        {
+            "name": "Pepito2",
+            "username": "MaesePepe2",
+            "email": "pepito2@gmail.falso",
+            "pass": "encripted_pass"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /userN
+
+    + Body
+
+            {
+                true
+            }

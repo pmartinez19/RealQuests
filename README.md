@@ -4,6 +4,9 @@
 https://private-9923220-realquests.apiary-mock.com/
 apiary.io documantention at file apiary.apib
 
+## Bachlog
+https://docs.google.com/spreadsheets/d/1jzGHuVVvjrxXgIGyr36ZM_ZxWxsuVAukV8hJI0wLCXY/edit?usp=sharing
+
 ## Objective
 -----------
 
